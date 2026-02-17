@@ -167,21 +167,6 @@ body::after {
   pointer-events:none;
 }
 
-.dua-board {
-  margin-top: 30px;
-  display: grid;
-  gap: 15px;
-}
-
-.dua-note {
-  background: linear-gradient(135deg,#fffaf4,#f6efe6);
-  border-left: 4px solid #caa27c;
-  padding: 15px 18px;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-  animation: noteFade 0.5s ease;
-}
-
 @keyframes noteFade {
   from { opacity:0; transform: translateY(10px); }
   to { opacity:1; transform: translateY(0); }
@@ -680,23 +665,6 @@ textarea {
 </div>
 
 <script>
-
-const duaForm = document.getElementById("duaForm");
-const duaBoard = document.getElementById("duaBoard");
-
-duaForm.addEventListener("submit", function(e){
-  e.preventDefault();
-
-  const text = document.getElementById("duaInput").value;
-
-  const note = document.createElement("div");
-  note.className = "dua-note";
-  note.innerText = text;
-
-  duaBoard.prepend(note);
-
-  document.getElementById("duaInput").value = "";
-});
 
 function openLuxuryEnvelope(){
 
