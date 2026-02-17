@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Armeen & Hammad</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  color: #4b3d33;
+  min-height: 100vh;
+  opacity: 0;
+  animation: pageFade 1.5s ease forwards;
+  background:
+    linear-gradient(rgba(247,242,236,0.75), rgba(239,230,220,0.85)),
+    url("venue.jpg") center / cover no-repeat fixed;
+}
+
+@keyframes pageFade { to { opacity: 1; } }
+
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+  padding: 12px;
+  text-align: center;
+  z-index: 10;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #8b6f5a;
+  font-weight: 600;
+}
+
+header {
+  text-align: center;
+  padding: 180px 20px 140px;
+}
+
+/* Glass panel */
+
+.hero-panel {
+  max-width: 900px;
+  margin: auto;
+  padding: 60px 40px;
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 24px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+}
+
+/* Divider */
+
+.hero-divider {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #caa27c, transparent);
+  margin: 30px auto;
+}
+
+/* Typography spacing */
+
+.bismillah {
+  font-size: 2.2em;
+  margin-bottom: 40px;
+  opacity: 0.85;
+}
+
+/* Names — make them feel like a moment */
+
+.names {
+  font-size: 5em;
+  margin: 30px 0 40px;
+  letter-spacing: 1px;
+}
+
+/* Invitation line */
+
+.tagline {
+  max-width: 720px;
+  margin: 30px auto 10px;
+  font-size: 1.15em;
+  line-height: 1.7;
+  font-style: italic;
+  color: #6b5a4a;
+  opacity: 0.9;
+}
+
+/* Countdown softer */
+
+.countdown {
+  margin-top: 30px;
+  font-size: 1.8em;
+  font-weight: 500;
+  color: #8b6f5a;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+/* soft shimmer line */
+
+.countdown::after {
+  content:"";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:-8px;
+  width:60px;
+  height:1px;
+  background: linear-gradient(to right, transparent, #caa27c, transparent);
+  opacity:0.7;
+}
+
+.divider {
+  width: 120px;
+  height: 2px;
+  margin: 40px auto;
+  background: linear-gradient(to right, transparent, #caa27c, transparent);
+}
+
+section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(14px);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+}
+
+.gallery {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+/* Lantern glow background */
+
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,215,160,0.15), transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(255,215,160,0.15), transparent 40%);
+  pointer-events:none;
+}
+
+body::after {
+  content:"";
+  position:fixed;
+  inset:0;
+  background: radial-gradient(circle, transparent 60%, rgba(0,0,0,0.15));
+  pointer-events:none;
+}
+
+.dua-board {
+  margin-top: 30px;
+  display: grid;
+  gap: 15px;
+}
+
+.dua-note {
+  background: linear-gradient(135deg,#fffaf4,#f6efe6);
+  border-left: 4px solid #caa27c;
+  padding: 15px 18px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  animation: noteFade 0.5s ease;
+}
+
+@keyframes noteFade {
+  from { opacity:0; transform: translateY(10px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+/* Envelope wrapper */
+
+.couture-envelope-wrapper {
+  text-align:center;
+  margin-top:40px;
+  cursor:pointer;
+  perspective:1000px;
+}
+
+/* Envelope body */
+
+.couture-envelope {
+  position:relative;
+  width:280px;
+  height:170px;
+  margin:auto;
+  background:linear-gradient(145deg,#f5e9dc,#e8d5c0);
+  border-radius:8px;
+  box-shadow:0 25px 60px rgba(0,0,0,0.25);
+  overflow:hidden;
+}
+
+/* Islamic emboss pattern */
+
+.couture-envelope::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(circle at 10px 10px, rgba(0,0,0,0.04) 2px, transparent 2px);
+  opacity:0.3;
+}
+
+/* Gold shimmer */
+
+.couture-envelope::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+  transform:translateX(-100%);
+  animation:shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  to { transform:translateX(100%); }
+}
+
+/* Letter centred inside envelope */
+
+.couture-letter {
+  position:absolute;
+  top:25%; /* move above seal */
+  left:50%;
+  transform:translate(-50%, -50%);
+  width:100%;
+  text-align:center;
+  font-size:1.6em;
+  color:#8b6f5a;
+  transition:transform 1s ease;
+  z-index:4; /* above everything */
+  pointer-events:none;
+}
+
+.couture-letter span {
+  letter-spacing:1px;
+  text-shadow:
+    0 2px 6px rgba(0,0,0,0.15),
+    0 0 12px rgba(202,162,124,0.25);
+}
+
+/* Slide upward when opening */
+
+.couture-envelope.open .couture-letter {
+  transform:translate(-50%, -130%);
+}
+
+/* Flap */
+
+.couture-flap {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(145deg,#e8d5c0,#d9bfa2);
+  clip-path:polygon(0 0,50% 60%,100% 0);
+  transform-origin:top;
+  transition:transform 0.8s ease;
+  z-index:2;
+}
+
+.couture-envelope.open .couture-flap {
+  transform:rotateX(180deg);
+}
+
+/* Wax seal */
+
+.wax-seal {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  width:42px;
+  height:42px;
+  background:radial-gradient(circle,#b76e79,#7c3f47);
+  border-radius:50%;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 6px 14px rgba(0,0,0,0.4);
+  transition:opacity 0.5s ease, transform 0.5s ease;
+  z-index:3;
+}
+
+.wax-seal.break {
+  opacity:0;
+  transform:scale(0.5);
+}
+
+/* Text below */
+
+.couture-text {
+  margin-top:12px;
+  color:#8b6f5a;
+}
+
+/* Rose petals */
+
+.petal {
+  position:fixed;
+  width:10px;
+  height:10px;
+  background:#f5c6c6;
+  border-radius:50%;
+  animation:fall 4s linear forwards;
+}
+
+@keyframes fall {
+  to { transform:translateY(100vh) rotate(360deg); opacity:0; }
+}
+
+.gallery img {
+  width: 260px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.warning {
+  margin-top: 20px;
+  padding: 15px;
+  background: #fff3f3;
+  border-radius: 10px;
+}
+
+/* DOWNLOAD BUTTON */
+
+.download-btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 14px 32px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #caa27c, #b76e79);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 0 20px rgba(202,162,124,0.4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.download-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.update-banner {
+  background: linear-gradient(135deg,#fff7ef,#f3e6d8);
+  border-left: 4px solid #caa27c;
+  padding: 15px 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+/* MODAL */
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(8px);
+  justify-content: center;
+  align-items: center;
+  z-index: 30;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  max-width: 600px;
+  width: 90%;
+  padding: 25px;
+  border-radius: 18px;
+  background: radial-gradient(circle at top, #fffdf9, #f7efe5);
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.45),
+    0 0 40px rgba(255,223,150,0.25);
+  animation: cardReveal 0.5s ease;
+  text-align: center;
+}
+
+.modal-content img {
+  max-width: 100%;
+  max-height: 65vh; /* keeps space for button */
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 4px solid rgba(202,162,124,0.6);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+.modal-content {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-content .download-btn {
+  margin-top: 20px;
+  display: inline-block;
+}
+
+@keyframes cardReveal {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+button {
+  margin-top: 20px;
+  background: linear-gradient(135deg, #caa27c, #b76e79);
+  color: white;
+  border: none;
+  padding: 14px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  padding: 40px;
+  opacity: 0.7;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="#details">Details</a>
+  <a href="#gallery">Nikkah</a>
+  <a href="#rsvp">RSVP</a>
+</nav>
+
+<header>
+
+  <div class="hero-panel">
+
+    <div class="bismillah">
+      بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+    </div>
+
+    <div class="hero-divider"></div>
+
+    <div class="names">Armeen & Hammad</div>
+
+    <p class="tagline">
+      With gratitude to Allah, we invite you to celebrate our union
+    </p>
+
+    <div class="countdown" id="countdown"></div>
+
+  </div>
+
+</header>
+
+<div class="divider"></div>
+
+<section id="details">
+  <div class="card">
+    <h2>Wedding Details</h2>
+    <p><strong>Date:</strong> August 9, 2026</p>
+    <p><strong>Time:</strong> 5:00 PM</p>
+    <p><strong>Venue:</strong> Osmaston Park Wedding Venue</p>
+    <p>Ashbourne, United Kingdom</p>
+
+    <p>
+      <a href="https://www.google.com/maps/search/Osmaston+Park+Wedding+Venue"
+      target="_blank"
+      style="color:#b76e79; font-weight:bold;">
+      Open directions in Google Maps →
+      </a>
+    </p>
+
+    <div class="couture-envelope-wrapper" onclick="openLuxuryEnvelope()">
+
+      <div class="couture-envelope">
+    
+        <div class="couture-flap"></div>
+    
+        <div class="couture-letter">
+          <span>بسم الله</span>
+        </div>
+    
+        <div class="wax-seal" id="waxSeal">✶</div>
+    
+      </div>
+    
+      <p class="couture-text">Open your invitation</p>
+    
+    </div>
+
+    <div class="warning">
+      ⚠️ Please ensure you navigate to <strong>Osmaston Park Wedding Venue</strong>.
+      There is another Osmaston Park nearby — please double check directions.
+    </div>
+
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="card">
+    <h2>Moments from Our Nikkah</h2>
+    <div class="gallery">
+      <img src="nikkah1.jpg">
+      <img src="nikkah2.jpg">
+    </div>
+  </div>
+</section>
+
+<section id="rsvp">
+  <div class="card">
+    <h2>RSVP</h2>
+    <p style="text-align:center; opacity:0.85;">
+      Kindly complete your RSVP below. We look forward to celebrating together, inshaAllah.
+      </p>
+      
+      <div style="margin-top:30px; border-radius:20px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.1);">
+      
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSeyn1LJztvO-66c6AlEGN1BMUBiFFq7aapvOY-k7DSowoTZMQ/viewform?embedded=true"
+          width="100%"
+          height="1200"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0">
+          Loading…
+        </iframe>
+      
+      </div>
+</div>
+
+  </div>
+</section>
+
+<section id="duas">
+  <div class="card">
+    <h2>Duas & Well Wishes</h2>
+    <p style="opacity:0.8;">Leave a prayer or message for us 🤍</p>
+
+    <form id="duaForm">
+      <textarea id="duaInput" placeholder="Write your dua or message..." required></textarea>
+      <button type="submit">Leave Dua</button>
+    </form>
+
+    <div id="duaBoard" class="dua-board"></div>
+  </div>
+</section>
+
+<section id="updates">
+  <div class="card">
+    <h2>Stay Updated</h2>
+
+    <p style="line-height:1.7;">
+      As we get closer to the day, we will be sharing further details here —
+      including dress guidance, the order of events, seating plan, prayer arrangements,
+      parking instructions, weather updates, and a link to share photos.
+    </p>
+
+    <p style="line-height:1.7;">
+      Please check back closer to the celebration and during the event for any
+      live updates or helpful information.
+    </p>
+
+    <p style="opacity:0.8; font-style:italic;">
+      Thank you for your patience and for being part of this special moment 🤍
+    </p>
+
+  </div>
+</section>
+
+
+<footer>
+  With love and duas — Armeen & Hammad
+</footer>
+
+<div class="modal" id="previewModal">
+  <div class="modal-content">
+    <img src="invitation.png">
+    <br><br>
+    <a href="invitation.png" download class="download-btn">Download Now</a>
+  </div>
+</div>
+
+<script>
+
+const duaForm = document.getElementById("duaForm");
+const duaBoard = document.getElementById("duaBoard");
+
+duaForm.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const text = document.getElementById("duaInput").value;
+
+  const note = document.createElement("div");
+  note.className = "dua-note";
+  note.innerText = text;
+
+  duaBoard.prepend(note);
+
+  document.getElementById("duaInput").value = "";
+});
+
+function openLuxuryEnvelope(){
+
+const env = document.querySelector(".couture-envelope");
+const seal = document.getElementById("waxSeal");
+
+seal.classList.add("break");
+env.classList.add("open");
+
+launchPetals();
+
+setTimeout(()=>{
+  document.getElementById("previewModal").classList.add("show");
+},1200);
+
+}
+
+function launchPetals(){
+for(let i=0;i<40;i++){
+  const p=document.createElement("div");
+  p.className="petal";
+  p.style.left=Math.random()*100+"vw";
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),4000);
+}
+}
+
+  function openPreview(e){
+    e.preventDefault();
+    document.getElementById("previewModal").classList.add("show");
+  }
+  
+  window.addEventListener("click", function(e){
+  const modal = document.getElementById("previewModal");
+  const env = document.querySelector(".couture-envelope");
+  const seal = document.getElementById("waxSeal");
+
+  if(e.target === modal){
+
+    modal.classList.remove("show");
+
+    // Reset envelope after closing
+    setTimeout(()=>{
+      env.classList.remove("open");
+      seal.classList.remove("break");
+    },300);
+
+  }
+});
+  
+  document.getElementById("rsvpForm").addEventListener("submit", function(e){
+    e.preventDefault();
+  
+    const attendance = document.getElementById("attendance").value;
+    const side = document.getElementById("side").value;
+  
+    this.style.display="none";
+  
+    const response = document.getElementById("rsvpResponse");
+    const text = document.getElementById("responseText");
+    const calendar = document.getElementById("calendarBtn");
+  
+    response.style.display="block";
+  
+    if(attendance==="yes"){
+      
+      let sideText = side==="bride"
+        ? "Thank you for celebrating with the bride."
+        : "Thank you for celebrating with the groom.";
+
+      text.innerText =
+        sideText + " Your presence and duas mean the world to us — we look forward to seeing you on the day, InshaAllah.";
+
+      calendar.style.display="inline-block";
+
+    } else {
+      text.innerText =
+        "Thank you for letting us know — you will be in our duas.";
+    }
+  
+  });
+  
+  const weddingDate = new Date("August 9, 2026").getTime();
+
+setInterval(() => {
+
+  const now = new Date().getTime();
+  const diff = weddingDate - now;
+
+  const days = Math.floor(diff / (1000*60*60*24));
+
+  document.getElementById("countdown").innerHTML =
+    `${days} days until we celebrate, InshaAllah`;
+
+}, 1000);
+  
+  </script>
+
+</body>
+</html>
