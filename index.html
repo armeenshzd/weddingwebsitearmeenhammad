@@ -316,7 +316,10 @@ body::after {
 }
 
 .gallery img {
-  width: 260px;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  object-fit: contain;
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
@@ -449,6 +452,13 @@ footer {
 
    @media (max-width: 768px) {
 
+body {
+  background:
+    linear-gradient(rgba(247,242,236,0.85), rgba(239,230,220,0.9)),
+    url("venue.jpg") center 35% / cover no-repeat;
+  background-attachment: scroll; /* removes fixed on mobile */
+}
+
 header {
   padding: 120px 16px 90px;
 }
@@ -495,6 +505,10 @@ section {
 .gallery img {
   width: 100%;
   max-width: 320px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .couture-envelope {
