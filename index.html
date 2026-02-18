@@ -401,6 +401,20 @@ body::after {
   box-shadow: 0 20px 60px rgba(0,0,0,0.35);
 }
 
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 .modal-content {
   max-height: 90vh;
   overflow-y: auto;
@@ -672,6 +686,7 @@ textarea {
 
 <div class="modal" id="previewModal">
   <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">✕</button>
     <img src="invitation.png">
     <br><br>
     <a href="invitation.png" download class="download-btn">Download Now</a>
@@ -679,6 +694,19 @@ textarea {
 </div>
 
 <script>
+
+function closeModal(){
+  const modal = document.getElementById("previewModal");
+  const env = document.querySelector(".couture-envelope");
+  const seal = document.getElementById("waxSeal");
+
+  modal.classList.remove("show");
+
+  setTimeout(()=>{
+    env.classList.remove("open");
+    seal.classList.remove("break");
+  },300);
+}
 
 function openLuxuryEnvelope(){
 
