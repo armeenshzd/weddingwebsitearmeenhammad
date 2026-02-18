@@ -12,12 +12,12 @@
 body {
   margin: 0;
   font-family: 'Playfair Display', serif;
-  color: #4b3d33;
+  color: #f5ece8; /* lighter text for contrast */
   min-height: 100vh;
   opacity: 0;
   animation: pageFade 1.5s ease forwards;
   background:
-    linear-gradient(rgba(247,242,236,0.75), rgba(239,230,220,0.85)),
+    linear-gradient(rgba(60,0,15,0.85), rgba(40,0,10,0.9)),
     url("venue.jpg") center / cover no-repeat fixed;
 }
 
@@ -26,8 +26,8 @@ body {
 nav {
   position: sticky;
   top: 0;
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(10px);
+  background: rgba(30, 0, 10, 0.6);
+  backdrop-filter: blur(12px);
   padding: 12px;
   text-align: center;
   z-index: 10;
@@ -36,7 +36,7 @@ nav {
 nav a {
   margin: 0 15px;
   text-decoration: none;
-  color: #8b6f5a;
+  color: #f2dcdc;
   font-weight: 600;
 }
 
@@ -51,11 +51,11 @@ header {
   max-width: 900px;
   margin: auto;
   padding: 60px 40px;
-  background: rgba(255,255,255,0.35);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(40,0,10,0.55); /* deep red glass */
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 24px;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
 }
 
 /* Divider */
@@ -63,7 +63,7 @@ header {
 .hero-divider {
   width: 80px;
   height: 2px;
-  background: linear-gradient(to right, transparent, #caa27c, transparent);
+  background: linear-gradient(to right, transparent, #d4a373, transparent);
   margin: 30px auto;
 }
 
@@ -81,6 +81,8 @@ header {
   font-size: 5em;
   margin: 30px 0 40px;
   letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6);
 }
 
 /* Invitation line */
@@ -134,11 +136,12 @@ section {
 }
 
 .card {
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(14px);
+  background: rgba(35,0,10,0.75);
+  backdrop-filter: blur(12px);
   border-radius: 24px;
   padding: 40px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  color: #f7ece6;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
 }
 
 .gallery {
@@ -318,17 +321,19 @@ body::after {
 .gallery img {
   width: 100%;
   max-width: 320px;
-  height: auto;
-  object-fit: contain;
+  height: 380px; /* controls how much is visible */
+  object-fit: cover;
+  object-position: top; /* keeps faces, cuts bottom */
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .warning {
   margin-top: 20px;
   padding: 15px;
-  background: #fff3f3;
+  background: rgba(120,20,40,0.25);
+  border: 1px solid rgba(255,255,255,0.2);
   border-radius: 10px;
+  color: #fff;
 }
 
 /* DOWNLOAD BUTTON */
@@ -478,8 +483,14 @@ header {
 }
 
 .hero-panel {
-  padding: 35px 20px;
-  border-radius: 18px;
+  max-width: 900px;
+  margin: auto;
+  padding: 60px 40px;
+  background: rgba(40, 0, 15, 0.55);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.6);
 }
 
 .bismillah {
@@ -545,10 +556,124 @@ textarea {
 
 }
 
+.big-envelope-wrapper {
+  display:flex;
+  justify-content:center;
+  margin:60px 0;
+  cursor:pointer;
+}
+
+.big-envelope {
+  position:relative;
+  width:420px;
+  height:260px;
+  background: linear-gradient(145deg,#7a1f3d,#5a0f2b); /* deep berry */
+  border-radius:12px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.35);
+  overflow:hidden;
+  perspective:1000px;
+}
+
+.big-flap {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: linear-gradient(145deg,#6a1834,#4a0c24);
+  clip-path:polygon(0 0,50% 60%,100% 0);
+  transform-origin:top;
+  transition:transform 1s ease;
+}
+
+.big-envelope.open .big-flap {
+  transform:rotateX(180deg);
+}
+
+.heart-seal {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:60px;
+  height:60px;
+  background: radial-gradient(circle,#b23a5a,#7a1f3d);
+  border-radius:50%;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.4),
+    inset 0 2px 6px rgba(255,255,255,0.2);
+}
+
+.big-envelope.open .heart-seal {
+  opacity:0;
+  transform:translate(-50%,-50%) scale(0.6);
+  transition: all 0.6s ease;
+}
+
+.big-letter {
+  position:absolute;
+  bottom:28px;
+  width:100%;
+  text-align:center;
+  font-family: 'Great Vibes', cursive;
+  font-size:2.2em;
+  color:white;
+  letter-spacing:0.5px;
+  text-shadow:
+    0 2px 8px rgba(0,0,0,0.45),
+    0 0 18px rgba(255,255,255,0.15);
+  transition:transform 1s ease;
+}
+
+.big-envelope.open .big-letter {
+  transform:translateY(-120px);
+}
+
+.envelope-gate {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg,#f7f2ec,#efe6dc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+.site-reveal {
+  animation: fadeInSite 1.2s ease forwards;
+}
+
+@keyframes fadeInSite {
+  from { opacity:0; transform: translateY(20px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
 </style>
 </head>
 
+<div id="envelopeGate" class="envelope-gate" onclick="openGateEnvelope()">
+
+  <div class="big-envelope">
+
+    <div class="big-flap"></div>
+
+    <div class="heart-seal">♥</div>
+    <div class="big-letter">
+      Tap to open your Invitation
+    </div>
+
+  </div>
+
+</div>
 <body>
+
+  <div id="siteContent" style="display:none;">
 
 <nav>
   <a href="#details">Details</a>
@@ -559,10 +684,6 @@ textarea {
 <header>
 
   <div class="hero-panel">
-
-    <div class="bismillah">
-      بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
-    </div>
 
     <div class="hero-divider"></div>
 
@@ -694,6 +815,22 @@ textarea {
 </div>
 
 <script>
+
+function openGateEnvelope(){
+
+document.querySelector(".big-envelope").classList.add("open");
+
+setTimeout(() => {
+
+  document.getElementById("envelopeGate").style.display = "none";
+
+  const site = document.getElementById("siteContent");
+  site.style.display = "block";
+  site.classList.add("site-reveal");
+
+}, 1000);
+
+}
 
 function closeModal(){
   const modal = document.getElementById("previewModal");
