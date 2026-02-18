@@ -90,22 +90,26 @@ header {
 .tagline {
   max-width: 720px;
   margin: 30px auto 10px;
-  font-size: 1.15em;
+  font-size: 1.2em;
   line-height: 1.7;
   font-style: italic;
-  color: #6b5a4a;
-  opacity: 0.9;
+  color: rgba(255,245,240,0.95); /* soft ivory */
+  text-shadow: 0 2px 12px rgba(0,0,0,0.7);
+  opacity: 1;
 }
 
 /* Countdown softer */
 
+.countdown-section {
+  text-align: center;
+  margin: 40px 0 20px;
+}
+
 .countdown {
-  margin-top: 30px;
-  font-size: 1.8em;
-  font-weight: 500;
-  color: #8b6f5a;
+  font-size: 1.6em;
+  color: rgba(255,245,240,0.95);
   letter-spacing: 0.5px;
-  position: relative;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
 }
 
 /* soft shimmer line */
@@ -233,7 +237,7 @@ body::after {
   width:100%;
   text-align:center;
   font-size:1.6em;
-  color:#8b6f5a;
+  color: rgba(255,245,240,0.95);
   transition:transform 1s ease;
   z-index:4; /* above everything */
   pointer-events:none;
@@ -375,6 +379,7 @@ body::after {
   justify-content: center;
   align-items: center;
   z-index: 30;
+  padding: 20px;
 }
 
 .modal.show {
@@ -459,6 +464,10 @@ button {
   cursor: pointer;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 footer {
   text-align: center;
   padding: 40px;
@@ -468,19 +477,17 @@ footer {
 /* =========================
    MOBILE RESPONSIVE STYLES
    ========================= */
-
+   
    @media (max-width: 768px) {
+    body { 
+      background:
+      linear-gradient(rgba(60,0,15,0.9), rgba(40,0,10,0.95)),
+      url("venue.jpg") center / cover no-repeat;
+    }
 
-body {
-  background:
-    linear-gradient(rgba(247,242,236,0.85), rgba(239,230,220,0.9)),
-    url("venue.jpg") center 35% / cover no-repeat;
-  background-attachment: scroll; /* removes fixed on mobile */
-}
-
-header {
-  padding: 120px 16px 90px;
-}
+    header {
+      padding: 120px 16px 90px;
+    }
 
 .hero-panel {
   max-width: 900px;
@@ -553,8 +560,7 @@ section {
 textarea {
   min-height: 100px;
 }
-
-}
+   }
 
 .big-envelope-wrapper {
   display:flex;
@@ -636,12 +642,14 @@ textarea {
 
 .envelope-gate {
   position: fixed;
+  transition: opacity 0.6s ease;
   inset: 0;
-  background: linear-gradient(135deg,#f7f2ec,#efe6dc);
+  background:
+    radial-gradient(circle at center, #5a0f2b 0%, #2a0008 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 999999; /* higher than everything */
   cursor: pointer;
 }
 
@@ -654,30 +662,35 @@ textarea {
   to { opacity:1; transform: translateY(0); }
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 </style>
 </head>
 
-<div id="envelopeGate" class="envelope-gate" onclick="openGateEnvelope()">
+<body>
 
-  <div class="big-envelope">
+  <div id="envelopeGate" class="envelope-gate" onclick="openGateEnvelope()">
 
-    <div class="big-flap"></div>
+<div class="big-envelope">
 
-    <div class="heart-seal">♥</div>
-    <div class="big-letter">
-      Tap to open your Invitation
-    </div>
+  <div class="big-flap"></div>
 
+  <div class="heart-seal">♥</div>
+  <div class="big-letter">
+    Tap to open your Invitation
   </div>
 
 </div>
-<body>
 
-  <div id="siteContent" style="display:none;">
+</div>
+
+<div id="siteContent">
 
 <nav>
   <a href="#details">Details</a>
-  <a href="#gallery">Nikkah</a>
+  <a href="#gallery">Nikkah Moments</a>
   <a href="#rsvp">RSVP</a>
 </nav>
 
@@ -687,17 +700,21 @@ textarea {
 
     <div class="hero-divider"></div>
 
+    <div class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+
     <div class="names">Armeen & Hammad</div>
 
     <p class="tagline">
       With gratitude to Allah, we invite you to celebrate our union
     </p>
 
-    <div class="countdown" id="countdown"></div>
-
   </div>
 
 </header>
+
+<div class="countdown-section">
+  <div class="countdown" id="countdown"></div>
+</div>
 
 <div class="divider"></div>
 
@@ -775,7 +792,6 @@ textarea {
       </div>
 </div>
 
-  </div>
 </section>
 
 <section id="updates">
@@ -820,29 +836,30 @@ function openGateEnvelope(){
 
 document.querySelector(".big-envelope").classList.add("open");
 
+const gate = document.getElementById("envelopeGate");
+
 setTimeout(() => {
-
-  document.getElementById("envelopeGate").style.display = "none";
-
-  const site = document.getElementById("siteContent");
-  site.style.display = "block";
-  site.classList.add("site-reveal");
-
-}, 1000);
+  gate.style.opacity = "0";
+  gate.style.pointerEvents = "none";
+  document.body.style.overflow = "auto";
+}, 800);
 
 }
 
 function closeModal(){
-  const modal = document.getElementById("previewModal");
-  const env = document.querySelector(".couture-envelope");
-  const seal = document.getElementById("waxSeal");
 
-  modal.classList.remove("show");
+const modal = document.getElementById("previewModal");
+const env = document.querySelector(".couture-envelope");
+const seal = document.getElementById("waxSeal");
 
-  setTimeout(()=>{
-    env.classList.remove("open");
-    seal.classList.remove("break");
-  },300);
+modal.classList.remove("show");
+document.body.classList.remove("modal-open"); // unlock scroll
+
+setTimeout(()=>{
+  env.classList.remove("open");
+  seal.classList.remove("break");
+},300);
+
 }
 
 function openLuxuryEnvelope(){
@@ -857,6 +874,7 @@ launchPetals();
 
 setTimeout(()=>{
   document.getElementById("previewModal").classList.add("show");
+  document.body.classList.add("modal-open"); // lock scroll
 },1200);
 
 }
@@ -882,49 +900,16 @@ for(let i=0;i<40;i++){
   const seal = document.getElementById("waxSeal");
 
   if(e.target === modal){
-
+    
     modal.classList.remove("show");
+    document.body.classList.remove("modal-open");
 
-    // Reset envelope after closing
     setTimeout(()=>{
       env.classList.remove("open");
       seal.classList.remove("break");
     },300);
-
   }
 });
-  
-  document.getElementById("rsvpForm").addEventListener("submit", function(e){
-    e.preventDefault();
-  
-    const attendance = document.getElementById("attendance").value;
-    const side = document.getElementById("side").value;
-  
-    this.style.display="none";
-  
-    const response = document.getElementById("rsvpResponse");
-    const text = document.getElementById("responseText");
-    const calendar = document.getElementById("calendarBtn");
-  
-    response.style.display="block";
-  
-    if(attendance==="yes"){
-      
-      let sideText = side==="bride"
-        ? "Thank you for celebrating with the bride."
-        : "Thank you for celebrating with the groom.";
-
-      text.innerText =
-        sideText + " Your presence and duas mean the world to us — we look forward to seeing you on the day, InshaAllah.";
-
-      calendar.style.display="inline-block";
-
-    } else {
-      text.innerText =
-        "Thank you for letting us know — you will be in our duas.";
-    }
-  
-  });
   
   const weddingDate = new Date("August 9, 2026").getTime();
 
@@ -939,6 +924,15 @@ setInterval(() => {
     `${days} days until we celebrate, InshaAllah`;
 
 }, 1000);
+
+// Fallback in case user doesn't tap
+setTimeout(() => {
+  const gate = document.getElementById("envelopeGate");
+  if (gate) {
+    gate.style.opacity = "0";
+    gate.style.pointerEvents = "none";
+  }
+}, 4000);
   
   </script>
 
