@@ -126,6 +126,10 @@ header {
   opacity:0.7;
 }
 
+.countdown {
+  position: relative;
+}
+
 .divider {
   width: 120px;
   height: 2px;
@@ -460,6 +464,29 @@ textarea {
   animation: fadeInSite 1.2s ease forwards;
 }
 
+.hero-video {
+  margin: 40px 0 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-video video {
+  width: 230px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 22px;
+
+  /* THIS is what you're missing */
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.6),
+    inset 0 0 20px rgba(255,255,255,0.05);
+}
+
+.hero-video video {
+  width: 100%;
+  max-width: 260px;
+}
 @keyframes fadeInSite {
   from { opacity:0; transform: translateY(20px); }
   to { opacity:1; transform: translateY(0); }
@@ -501,11 +528,17 @@ html, body {
 
   <div class="hero-panel">
 
-    <div class="hero-divider"></div>
-
     <div class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
 
     <div class="names">Hammad & Armeen</div>
+
+    <div class="hero-video">
+        <video autoplay muted loop playsinline>
+          <source src="your-video.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="hero-divider"></div>
 
     <p class="tagline">
       With gratitude to Allah, we invite you to celebrate our union
