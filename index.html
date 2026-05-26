@@ -297,7 +297,7 @@ footer {
     }
 
 .hero-panel {
-  max-width: 900px;
+  max-width: 100%;
   margin: auto;
   padding: 60px 40px;
   background: rgba(40, 0, 15, 0.55);
@@ -404,28 +404,36 @@ textarea {
 }
 
 .heart-seal {
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:60px;
-  height:60px;
-  background: radial-gradient(circle,#b23a5a,#7a1f3d);
-  border-radius:50%;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:28px;
-  box-shadow:
-    0 6px 18px rgba(0,0,0,0.4),
-    inset 0 2px 6px rgba(255,255,255,0.2);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 6px;
+
+  width: 95px;
+  max-width: 95px;
+  height: auto;
+
+  display: block;
+
+  z-index: 5;
+
+  filter:
+    drop-shadow(0 10px 20px rgba(0,0,0,0.35));
+
+  transition:
+    transform 0.7s cubic-bezier(.22,1,.36,1),
+    opacity 0.7s ease,
+    filter 0.7s ease;
 }
 
 .big-envelope.open .heart-seal {
-  opacity:0;
-  transform:translate(-50%,-50%) scale(0.6);
-  transition: all 0.6s ease;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.4) rotate(12deg);
+  filter: blur(4px);
+
+  transition:
+    all 0.7s cubic-bezier(.22,1,.36,1);
 }
 
 .big-letter {
@@ -483,6 +491,12 @@ textarea {
     inset 0 0 20px rgba(255,255,255,0.05);
 }
 
+.countdown span {
+  font-size: 0.6em;
+  opacity: 0.7;
+  margin-right: 6px;
+}
+
 .hero-video video {
   width: 100%;
   max-width: 260px;
@@ -507,9 +521,9 @@ html, body {
 
   <div class="big-flap"></div>
 
-  <div class="heart-seal">♥</div>
+  <img src="./seal.png" class="heart-seal" alt="Wax Seal">
   <div class="big-letter">
-    Tap to open your Invitation
+    Tap to open your invitation
   </div>
 
 </div>
@@ -654,33 +668,18 @@ setTimeout(() => {
 }, 800);
 
 }
-
-
-
-
-  if(e.target === modal){
-    
-    modal.classList.remove("show");
-    document.body.classList.remove("modal-open");
-
-    setTimeout(()=>{
-      env.classList.remove("open");
-      seal.classList.remove("break");
-    },300);
-  }
-;
   
-  const weddingDate = new Date("August 9, 2026").getTime();
+  const weddingDate = new Date(2026, 7, 9).getTime(); // months are 0-indexed, so 7 = August
 
-setInterval(() => {
+  setInterval(() => {
 
   const now = new Date().getTime();
   const diff = weddingDate - now;
 
   const days = Math.floor(diff / (1000*60*60*24));
 
-  document.getElementById("countdown").innerHTML =
-    `${days} days until we celebrate, InshaAllah`;
+document.getElementById("countdown").innerHTML =
+  `${days}<span>d</span> until we celebrate, InshaAllah`;
 
 }, 1000);
 
