@@ -152,6 +152,82 @@ section {
   box-shadow: 0 20px 60px rgba(0,0,0,0.45);
 }
 
+/* Celebration itinerary */
+.itinerary-card {
+  overflow: hidden;
+}
+
+.itinerary-intro {
+  margin: -4px 0 30px;
+  text-align: center;
+  color: rgba(255,245,240,0.78);
+  font-style: italic;
+}
+
+.itinerary {
+  position: relative;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.itinerary::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  bottom: 16px;
+  left: 93px;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, #caa27c 8%, #caa27c 92%, transparent);
+  opacity: 0.7;
+}
+
+.itinerary-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 70px 22px minmax(0, 1fr);
+  column-gap: 12px;
+  align-items: center;
+  padding: 14px 0;
+}
+
+.itinerary-time {
+  color: #e5bf96;
+  font-size: 1.05em;
+  font-weight: 600;
+  text-align: right;
+}
+
+.itinerary-marker {
+  position: relative;
+  z-index: 1;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(229,191,150,0.65);
+  border-radius: 50%;
+  background: #4b1024;
+  color: #e5bf96;
+  font-size: 0.68em;
+  box-shadow: 0 0 12px rgba(202,162,124,0.2);
+}
+
+.itinerary-event {
+  position: relative;
+  padding: 13px 18px;
+  border: 1px solid rgba(202,162,124,0.26);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.045);
+  color: #fff7f0;
+  line-height: 1.4;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.itinerary-item:hover .itinerary-event {
+  transform: translateX(5px);
+  background: rgba(202,162,124,0.12);
+}
+
 .gallery {
   display: flex;
   gap: 20px;
@@ -367,6 +443,28 @@ section {
 textarea {
   min-height: 100px;
 }
+
+  .itinerary::before {
+    left: 72px;
+  }
+
+  .itinerary-item {
+    grid-template-columns: 52px 20px minmax(0, 1fr);
+    column-gap: 10px;
+  }
+
+  .itinerary-time {
+    font-size: 0.92em;
+  }
+
+  .itinerary-event {
+    padding: 12px 14px;
+  }
+
+  .itinerary-marker {
+    width: 20px;
+    height: 20px;
+  }
    }
 
 .big-envelope-wrapper {
@@ -520,6 +618,7 @@ html, body {
 
 <nav>
   <a href="#details">Details</a>
+  <a href="#itinerary">Itinerary</a>
   <a href="#gallery">Nikkah Moments</a>
   <a href="#rsvp">RSVP</a>
 </nav>
@@ -575,6 +674,26 @@ html, body {
       There is another Osmaston Park nearby — please double check directions.
     </div>
 
+  </div>
+</section>
+
+<section id="itinerary">
+  <div class="card itinerary-card">
+    <h2 style="text-align:center;">Itinerary</h2>
+    <p class="itinerary-intro">A little glimpse of our evening together</p>
+
+    <div class="itinerary">
+      <div class="itinerary-item"><div class="itinerary-time">17:00</div><div class="itinerary-marker">✦</div><div class="itinerary-event">Guest arrival &amp; canapés</div></div>
+      <div class="itinerary-item"><div class="itinerary-time">17:30</div><div class="itinerary-marker">✦</div><div class="itinerary-event">Baraat arrives</div></div>
+      <div class="itinerary-item"><div class="itinerary-time">18:00</div><div class="itinerary-marker">✦</div><div class="itinerary-event">Asr Jamaat</div></div>
+      <div class="itinerary-item"><div class="itinerary-time">18:30</div><div class="itinerary-marker">✦</div><div class="itinerary-event">Family &amp; couple entrance</div></div>
+      <div class="itinerary-item"><div class="itinerary-time">19:00</div><div class="itinerary-marker">✦</div><div class="itinerary-event">Speeches, followed by dua</div></div>
+      <div class="itinerary-item"><div class="itinerary-time">19:30</div><div class="itinerary-marker">✦</div><div class="itinerary-event">Starters, mains &amp; dessert</div></div>
+      <div class="itinerary-item"><div class="itinerary-time">20:30</div><div class="itinerary-marker">✦</div><div class="itinerary-event">Photos with guests &amp; dessert carts</div></div>
+      <div class="itinerary-item"><div class="itinerary-time">21:00</div><div class="itinerary-marker">✦</div><div class="itinerary-event">Heel / shoe-stealing fun</div></div>
+      <div class="itinerary-item"><div class="itinerary-time">21:30</div><div class="itinerary-marker">✦</div><div class="itinerary-event">Maghreb Jamaat</div></div>
+      <div class="itinerary-item"><div class="itinerary-time">22:00</div><div class="itinerary-marker">✦</div><div class="itinerary-event">Rukhsati &amp; sparkler exit ✨</div></div>
+    </div>
   </div>
 </section>
 
