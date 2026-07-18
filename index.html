@@ -29,12 +29,15 @@ nav {
   background: rgba(30, 0, 10, 0.6);
   backdrop-filter: blur(12px);
   padding: 12px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
   z-index: 10;
 }
 
 nav a {
-  margin: 0 15px;
+  margin: 0 11px;
   text-decoration: none;
   color: #f2dcdc;
   font-weight: 600;
@@ -318,6 +321,36 @@ body::after {
   margin-top: 20px;
 }
 
+.guest-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.guest-info-item {
+  padding: 22px;
+  border: 1px solid rgba(202,162,124,0.25);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.045);
+}
+
+.guest-info-item h3 {
+  margin: 0 0 10px;
+  color: #e5bf96;
+  font-size: 1.2em;
+}
+
+.guest-info-item p {
+  margin: 0;
+  line-height: 1.65;
+}
+
+.weather-note {
+  color: rgba(255,245,240,0.8);
+  font-style: italic;
+}
+
 @keyframes cardReveal {
   from {
     transform: scale(0.9);
@@ -403,7 +436,7 @@ footer {
 }
 
 nav a {
-  margin: 0 8px;
+  margin: 0 4px;
   font-size: 0.95em;
 }
 
@@ -464,6 +497,10 @@ textarea {
   .itinerary-marker {
     width: 20px;
     height: 20px;
+  }
+
+  .guest-info-grid {
+    grid-template-columns: 1fr;
   }
    }
 
@@ -619,6 +656,7 @@ html, body {
 <nav>
   <a href="#details">Details</a>
   <a href="#itinerary">Itinerary</a>
+  <a href="#guest-info">Guest Info</a>
   <a href="#gallery">Nikkah Moments</a>
   <a href="#rsvp">RSVP</a>
 </nav>
@@ -662,7 +700,7 @@ html, body {
     <p>Ashbourne, United Kingdom</p>
 
     <p>
-      <a href="https://maps.app.goo.gl/tVUtTjDZseqPzQNp9?g_st=ic"
+      <a href="https://www.google.com/maps/search/Osmaston+Park+Wedding+Venue"
       target="_blank"
       style="color:#b76e79; font-weight:bold;">
       Open directions in Google Maps →
@@ -674,6 +712,36 @@ html, body {
       There is another Osmaston Park nearby — please double check directions.
     </div>
 
+  </div>
+</section>
+
+<section id="guest-info">
+  <div class="card">
+    <h2 style="text-align:center;">Guest Information</h2>
+    <p style="text-align:center; opacity:0.82; margin-bottom:0;">A few helpful details for the day</p>
+
+    <div class="guest-info-grid">
+      <div class="guest-info-item">
+        <h3>Share Your Photos</h3>
+        <p>We would love to see the day through your eyes. Please add any photos or videos you take to our shared album.</p>
+        <a class="download-btn" href="https://photos.app.goo.gl/M3e4W6iJE2d4Ffmh8" target="_blank" rel="noopener">Add your photos →</a>
+      </div>
+
+      <div class="guest-info-item">
+        <h3>Weather</h3>
+        <p class="weather-note">Check back closer to the time for a weather update.</p>
+      </div>
+
+      <div class="guest-info-item">
+        <h3>Seating Plan</h3>
+        <p>The first few tables at the front will be reserved. Other than that, please feel free to sit wherever you like.</p>
+      </div>
+
+      <div class="guest-info-item">
+        <h3>Parking</h3>
+        <p>On arrival, please follow the parking attendant’s instructions.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -690,9 +758,9 @@ html, body {
       <div class="itinerary-item"><div class="itinerary-time">19:00</div><div class="itinerary-marker">✦</div><div class="itinerary-event">Speeches, followed by dua</div></div>
       <div class="itinerary-item"><div class="itinerary-time">19:30</div><div class="itinerary-marker">✦</div><div class="itinerary-event">Starters, mains &amp; dessert</div></div>
       <div class="itinerary-item"><div class="itinerary-time">20:30</div><div class="itinerary-marker">✦</div><div class="itinerary-event">Photos with guests &amp; dessert carts</div></div>
-      <div class="itinerary-item"><div class="itinerary-time">21:00</div><div class="itinerary-marker">✦</div><div class="itinerary-event">Games</div></div>
+      <div class="itinerary-item"><div class="itinerary-time">21:00</div><div class="itinerary-marker">✦</div><div class="itinerary-event">Heel / shoe-stealing fun</div></div>
       <div class="itinerary-item"><div class="itinerary-time">21:30</div><div class="itinerary-marker">✦</div><div class="itinerary-event">Maghreb Jamaat</div></div>
-      <div class="itinerary-item"><div class="itinerary-time">22:00</div><div class="itinerary-marker">✦</div><div class="itinerary-event">Rukhsati &amp; Sparklers exit ✨</div></div>
+      <div class="itinerary-item"><div class="itinerary-time">22:00</div><div class="itinerary-marker">✦</div><div class="itinerary-event">Rukhsati &amp; sparkler exit ✨</div></div>
     </div>
   </div>
 </section>
